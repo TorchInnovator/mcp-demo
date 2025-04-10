@@ -1,0 +1,38 @@
+{
+    "name": "my-mcp-agent",
+    "description": "MCP AI Agent Server",
+    "version": "1.0.0",
+    "healthCheckUrl": "http://127.0.0.1:8081/mcp/health",
+    "toolsUrl": "http://127.0.0.1:8081/mcp/tools",
+    "executeUrl": "http://127.0.0.1:8081/mcp/execute",
+    "server": {
+        "command": "python",
+        "args": ["-m", "uvicorn", "main:app", "--host", "127.0.0.1", "--port", "8081", "--log-level", "debug"],
+        "workingDirectory": "C:\\Users\\jay\\Documents\\github\\jay\\mcp",
+        "timeout": 30000,
+        "retryCount": 3,
+        "retryDelay": 1000
+    },
+    "tools": [
+        {
+            "name": "read_file",
+            "description": "Read the content of a file",
+            "parameters": {
+                "file_path": {
+                    "type": "string",
+                    "description": "Path to the file to read"
+                }
+            }
+        },
+        {
+            "name": "count_r",
+            "description": "Count the number of 'r' characters in a string",
+            "parameters": {
+                "text": {
+                    "type": "string",
+                    "description": "Text to count 'r' characters in"
+                }
+            }
+        }
+    ]
+} 
